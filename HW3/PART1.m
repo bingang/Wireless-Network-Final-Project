@@ -4,7 +4,7 @@ inter_side_distance = 500
 len_hex = inter_side_distance/sqrt(3);
 num_first_tier = 6;
 num_second_tier = 12;
-
+%hi
 angle = atan(sqrt(3)/3);
 bs_coordinate = [0,0,1];
     
