@@ -1,7 +1,13 @@
-function nothing = Show_Mobile_Movement(all_mobile_coordinate,num_of_bs)
+function nothing = Show_Specific_Mobile_Movement(all_mobile_coordinate,num_of_bs,user_index)
+
+animate = animatedline('Marker' ,'o','MarkerSize',0.01);
 nothing = 0;
 X_mobile     = all_mobile_coordinate(:,1);
 Y_mobile     = all_mobile_coordinate(:,2);
+addpoints(animate,X_mobile(user_index),Y_mobile(user_index));
+drawnow limitrate
+end
+  %{
 bs_of_mobile = all_mobile_coordinate(:,3);
 bs_of_mobile = double(bs_of_mobile); 
 num_of_user = size(all_mobile_coordinate,1);
@@ -21,4 +27,4 @@ background_color = 0.2;
  BS_label_for_mobile    = num2str(bs_of_mobile);  BS_label_for_mobile = cellstr(BS_label_for_mobile); 
  label = strcat({'   '},BS_label_for_mobile);
  text(X_mobile,Y_mobile,label,'FontSize',7);
-end
+ %}

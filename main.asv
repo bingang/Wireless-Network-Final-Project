@@ -15,10 +15,11 @@ num_of_bs = size(bs_coordinate,1);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Construction of  moobile coordinate %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 mobile_coordinate = Construction_of_mobile_coordinate(num_of_user,bs_coordinate,inter_side_distance);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Show_Backgrou b d(Base Station) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%nothing = Show_Background(bs_coordinate,inter_side_distance);
+nothing = Show_Background(bs_coordinate,inter_side_distance);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  mobile move %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 for time = 1: simulation_time
   mobile_coordinate = random_walk(num_of_user,inter_side_distance,mobile_coordinate,bs_coordinate,minSpeed,maxSpeed);
+   [Power Other_Power SINR Other_SINR] = Calculate_Power_and_SINR(mobile_coordinate,bs_coordinate);
    % Handoff  mechanism HERE!!!!!!!!!!!!!!!!!!! 
    
    ave_SINR = ave_SINR + SINR;
@@ -30,10 +31,12 @@ for time = 1: simulation_time
    
    %%%%%%%%% Criteria by Power %%%%%%%%%
    
+    %nothing = Show_Specific_Mobile_Movement(mobile_coordinate,num_of_bs,user_index);
    
   
   
  
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  show final position %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % nothing = Show_Mobile_Movement(mobile_coordinate,num_of_bs);
 

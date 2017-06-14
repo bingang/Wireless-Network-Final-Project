@@ -1,0 +1,30 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Parameter configuration %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+num_of_user = 100;
+inter_side_distance = 500;
+simulation_time = 100;
+minSpeed = 0;
+maxSpeed = 15;
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Construction of BS coordinate %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+bs_coordinate = Construction_of_BS_coordinate(inter_side_distance);
+num_of_bs = size(bs_coordinate,1);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Construction of  moobile coordinate %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+mobile_coordinate = Construction_of_mobile_coordinate(num_of_user,bs_coordinate,inter_side_distance);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Needed Parameter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+[Power Other_Power SINR Other_SINR Interference_Itself] = Calculate_Power_and_SINR(mobile_coordinate,bs_coordinate);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Plot %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+ subplot(5,1,1)  
+ plot(Power,'Marker','o')
+ title('Power in db(tansmitted power is 33d)');
+ subplot(5,1,2)  
+ plot(Other_Power,'Marker','o')
+ title('Other_Power in db(tansmitted power is 33)');
+ subplot(5,1,3)  
+ plot(SINR,'Marker','o')
+ title('SINR');
+ subplot(5,1,4)  
+ plot(Other_SINR,'Marker','o')
+ title('Other_SINR');
+ subplot(5,1,5)  
+ plot(Interference_Itself,'Marker','o')
+ title('Interference_Itself');
+
